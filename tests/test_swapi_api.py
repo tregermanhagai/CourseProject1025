@@ -19,7 +19,7 @@ def test_verify_name_of_star_11():
 
 
 def test_create_new_post():
-    """Verify that the new post is created successfully."""
+    """Verify that the new post is created successfully. This is a demonstration of a POST request to a test API."""
     # 1. The endpoint that accepts POST requests
     url = "https://jsonplaceholder.typicode.com/posts"
 

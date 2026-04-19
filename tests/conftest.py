@@ -1,6 +1,10 @@
 import pytest
 from playwright.sync_api import Page
 
+@pytest.fixture
+def navigate_to_login(page: Page) -> Page:
+    page.goto("https://www.saucedemo.com/")
+    return page
 
 @pytest.fixture
 def prepare_and_tear_down(page: Page):

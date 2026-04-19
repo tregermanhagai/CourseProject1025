@@ -54,3 +54,17 @@ def test_checkout(page: Page) -> None:
     page.locator("[data-test=\"back-to-products\"]").click()
     page.get_by_role("button", name="Open Menu").click()
     page.locator("[data-test=\"logout-sidebar-link\"]").click()
+
+@pytest.mark.sanity
+def test_login_add_remove_from_cart(page: Page) -> None:
+    """Login to add and remove sauce labs backpack"""
+    page.goto("https://www.saucedemo.com/")
+    page.locator("[data-test=\"username\"]").fill("standard_user")
+    page.locator("[data-test=\"password\"]").fill("secret_sauce")
+    page.locator("[data-test=\"login-button\"]").click()
+    page.locator("[data-test=\"add-to-cart-sauce-labs-backpack\"]").click()
+    page.locator("[data-test=\"shopping-cart-link\"]").click()
+    page.locator("[data-test=\"remove-sauce-labs-backpack\"]").click()
+    expect(page.locator("[data-test=\"inventory-item-name\"]")).not_to_be_visible()
+    page.get_by_role("button", name="Open Menu").click()
+    page.locator("[data-test=\"logout-sidebar-link\"]").click()
